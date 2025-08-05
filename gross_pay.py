@@ -1,28 +1,29 @@
-hour = input("Enter Hours: ")
-try:
-	hours = float(input("Enter Hours: "))
-except ValueError:
-	print("Error, please enter numeric input for hour")
-	quit()
-	
-try:
-	rate = float(input("Enter Rate: "))
-except ValueError:
-	print("Error, please enter numeric input for hour")
-	quit()
-	
-pay = 0
-if hours <= 40:
-	pay = round(hours * rate, 2)
-	print(f"Your pay is {pay}")
-elif hours > 40:
-	overtime = hours - 40
-	overtime_pay = (rate * 1.5) * overtime
-	pay = round((hours - overtime) * rate, 2) + overtime_pay
-	print(f"You worked for more than 40 hours, your payment plus overtime is: {pay}")
-	
+def compute_pay(p_hour, p_rate):
+	if p_hour <= 40:
+		pay = round(hours * rate, 2)
+		
+	else:
+		overtime = p_hour - 40
+		overtime_pay = (p_rate * 1.5) * overtime
+		pay = round((p_hour - overtime) * p_rate, 2) + overtime_pay
+	return pay
+
+def check_for_float(p_input):
+	try:
+		val = float(p_input)
+	except ValueError:
+		print("Error, Enter numeic input")
+		quit()
+		
+
+hours = (input("Enter Hours: "))
+check_for_float(hours)
+rate = (input("Enter Rate: "))
+check_for_float(rate)
+hours = float(hours)
+rate = float(rate)
 
 
+output = compute_pay(hours, rate)
 
-
-
+print(f"Pay: {output}")
